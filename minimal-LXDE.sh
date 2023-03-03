@@ -3,7 +3,7 @@ echo 'fastestmirror=1' | sudo tee -a /etc/dnf/dnf.conf
 echo 'max_parallel_downloads=10' | sudo tee -a /etc/dnf/dnf.conf
 echo 'deltarpm=true' | sudo tee -a /etc/dnf/dnf.conf
 
-# Install gnome with login manager and basic packages
+# Install lxde with login manager and basic packages
 sudo dnf install nano lxdm imsettings-lxde lxde-common lxde-icon-theme jgmenu-lx lxmenu-data lxinput lxappearance lxsession-edit -y
 sudo systemctl enable lxdm
 sudo systemctl set-default graphical.target
@@ -24,3 +24,5 @@ sudo dnf install dnf-plugins-core -y
 sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel -y
 sudo dnf install lame\* --exclude=lame-devel -y
 sudo dnf group upgrade --with-optional Multimedia -y
+
+sudo systemctl start lxdm
